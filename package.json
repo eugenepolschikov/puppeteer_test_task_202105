@@ -32,9 +32,9 @@
         "eslint"
     ],
     "author": {
-        "name": "Oliver Wyman Labs",
-        "email": "OWLabsSWATTeam@oliverwyman.com",
-        "url": "http://http://labs.oliverwyman.com/"
+        "name": "eugene polschikov",
+        "email": "eugene.polschikov@gmail.com",
+        "url": "https://stackoverflow.com/users/1546574/eugene-polschikov"
     },
     "license": "MIT",
     "dependencies": {
