@@ -28,6 +28,13 @@ class HomePage extends BasePage {
         // add key project button
         this.addKey = "//span[@class='hotkey-span-button-primary'][text()='Ctrl-K']";
 
+        // key popup webelements
+        this.keyInput = "#keyName";
+        // this.platformInput = "#select2-drop-mask";
+        this.platformInput = "#s2id_autogen11";
+        this.androidOptionXpath = "(//ul//li/*[text()='Android'])[2]";
+        this.saveKey = "#btn_addkey";
+
     }
 
     async userLogout() {
@@ -96,8 +103,20 @@ class HomePage extends BasePage {
         await this.waitForXpathAndClickAndWait(this.addKey);
     }
 
-    async fillInKeyPopup(){
+    async fillInKeyPopupAndSaveIt(value) {
+        await this.enterInField(
+            this.keyInput,
+            value
+        );
 
+        await this.clickByCssAndWait(this.platformInput);
+        await this.waitForXpathAndClickAndWait(this.androidOptionXpath);
+        await Promise.all([
+            this.page.waitForNavigation({
+                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
+            }),
+            this.page.click(this.saveKey),
+        ]);
     }
 }
 

@@ -5,6 +5,7 @@ const rootConfig = require('config');
 const reportUtils = require('../reporting/utils');
 const homepage = require('../pages/home-page.js')
 const ProjectDto = require("../dtos/project-dto");
+const KeyDto = require("../dtos/key-dto");
 
 const waitTimes = rootConfig.get('testdata.wait-times');
 
@@ -12,6 +13,7 @@ const HomepageNewprojectTests = () => {
     const {page, reporter} = global;
     const projectData = new ProjectDto();
     const projectTwo = new ProjectDto();
+    const keyVal = new KeyDto();
 
     beforeEach(() => {
         jest.setTimeout(waitTimes.jestExtendedTimeOut);
@@ -47,6 +49,7 @@ const HomepageNewprojectTests = () => {
         // await homepage.openProjectByName(projectData.projectName);
         await homepage.openProjectByName("eugene-project-p9lqv-2021-05-27");
         await homepage.addKeyButtonClick();
+        await homepage.fillInKeyPopupAndSaveIt(keyVal.keyName);
 
     })
 
