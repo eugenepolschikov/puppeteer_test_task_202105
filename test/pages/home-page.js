@@ -32,7 +32,8 @@ class HomePage extends BasePage {
         this.keyInput = "#keyName";
         // this.platformInput = "#select2-drop-mask";
         this.platformInput = "#s2id_autogen11";
-        this.androidOptionXpath = "(//ul//li/*[text()='Android'])[2]";
+        // this.androidOptionXpath = "(//ul//li/*[text()='Android'])[2]";
+        this.androidOptionXpath = "(//*[text()='Android'])[4]";
         this.saveKey = "#btn_addkey";
 
     }
@@ -110,13 +111,15 @@ class HomePage extends BasePage {
         );
 
         await this.clickByCssAndWait(this.platformInput);
-        await this.waitForXpathAndClickAndWait(this.androidOptionXpath);
-        await Promise.all([
-            this.page.waitForNavigation({
-                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
-            }),
-            this.page.click(this.saveKey),
-        ]);
+        // await this.waitForXpathAndClickAndWait(this.androidOptionXpath);
+        await this.waitForXpathAndClickAndWait("//div[@role='option'][text()='Android']");
+        this.page.click(this.saveKey);
+        // await Promise.all([
+        //     this.page.waitForNavigation({
+        //         waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
+        //     }),
+        //     this.page.click(this.saveKey),
+        // ]);
     }
 }
 
