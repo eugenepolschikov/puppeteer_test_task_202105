@@ -7,35 +7,12 @@ class HomePage extends BasePage {
         super();
         this.page = global.page;
 
-        // top navigation bar
+        // new project button
         this.newProjectBtn = "button[data-action=add-project]";
 
-        // planning tab
-        this.planningTab = "[href='/planning']";
+        // project popup webelements
+        this.projectName = "#addproject  #project-name";
 
-        // preparation tab
-        this.preparationTab = "[href='/preparation'] span";
-
-        // user menu
-        this.drpUser = 'button.user-menu button.expand-btn i';
-        this.btnLogout = 'button[id=navbar-logout]';
-
-        // search input across campaigns/subcampaigns
-        this.searchInput = "input[id*='input'][placeholder*='Search']";
-
-        // Alerts header
-        this.alertsHeader = 'h2.alerts-wrapper__heading';
-
-        // authorized user context menu
-        this.userMenu = "button[type='button'][class*='user-menu']";
-
-        // this.logoutUserOption = '#navbar-logout';
-        this.logoutUserOption = "#app [role='menu'] button";
-
-        // unauthorized elements of 403 page
-        this.unauthorizedHeader = 'div.error-page h1.title';
-        this.unauthorized403Body = 'div.error-page h2>span.error-code';
-        this.unauthorizedLabel = 'div.error-page p';
     }
 
     async userLogout() {
@@ -54,12 +31,15 @@ class HomePage extends BasePage {
     }
 
     async addNewProject() {
-        await Promise.all([
-            this.page.waitForNavigation({
-                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
-            }),
-            this.page.click(this.planningTab),
-        ]);
+            this.page.click(this.newProjectBtn);
+    }
+
+    async fillInProjectDataAndSubmit(projectData){
+        await this.enterInField(
+            this.projectName,
+            projectData.projectName
+        );
+
     }
 }
 

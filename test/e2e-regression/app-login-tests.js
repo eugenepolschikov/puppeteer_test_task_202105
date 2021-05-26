@@ -42,9 +42,7 @@ const AppLoginTests = () => {
 
         // Login to the application
         await loginPage.login(url);
-        //@TODO adjust appropraite asserts
-        // expect(!!(await homePage.isVisible(homePage.alertsHeader))).to.eql(true);
-        // expect(await homePage.getTextContent(homePage.alertsHeader)).to.eql(alertsHeaderTextValue);
+        expect(await global.page.url().includes('/projects')).to.be.eql(true);
     });
 };
 

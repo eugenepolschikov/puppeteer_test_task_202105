@@ -6,6 +6,8 @@
  */
 
 const appLoginTest = require('../test/e2e-regression/app-login-tests');
+const projectTest = require('../test/e2e-regression/homepage-newproject-tests')
 
 
 describe('appLoginTests', appLoginTest);
+describe('newPorjectTests', projectTest);
