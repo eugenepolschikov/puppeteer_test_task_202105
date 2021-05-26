@@ -3,6 +3,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const BasePage = require('./base-page.js');
+const util = require('util');
 
 
 class HomePage extends BasePage {
@@ -22,6 +23,10 @@ class HomePage extends BasePage {
 
         //actual project list
         this.projectList = "//div[@data-rbd-draggable-context-id='0']//div[@data-name='project-sidebar']/a";
+        this.projectWithNamePlaceholder = "//a[contains(text(),'%s')]";
+
+        // add key project button
+        this.addKey = "//span[@class='hotkey-span-button-primary'][text()='Ctrl-K']";
 
     }
 
@@ -41,10 +46,10 @@ class HomePage extends BasePage {
     }
 
     async addNewProject() {
-            this.page.click(this.newProjectBtn);
+        this.page.click(this.newProjectBtn);
     }
 
-    async fillInProjectDataAndSubmit(projectData){
+    async fillInProjectDataAndSubmit(projectData) {
         await this.enterInField(
             this.projectName,
             projectData.projectName
@@ -58,7 +63,7 @@ class HomePage extends BasePage {
         ]);
     }
 
-    async navigateToProjectList(){
+    async navigateToProjectList() {
         await Promise.all([
             this.page.waitForNavigation({
                 waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
@@ -68,9 +73,31 @@ class HomePage extends BasePage {
 
     }
 
-    async checkForTotalNumberOfProjectsOnThePage(totalProjNumber){
+    async checkForTotalNumberOfProjectsOnThePage(totalProjNumber) {
         let arrayOfProjects = await page.$x(this.projectList);
         expect(arrayOfProjects.length).to.eql(totalProjNumber);
+    }
+
+    async openProjectByName(projectName) {
+        const locatorToOpenXpath = util.format(
+            this.projectWithNamePlaceholder,
+            projectName
+        );
+
+        await Promise.all([
+            this.page.waitForNavigation({
+                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
+            }),
+            this.waitForXpathAndClickAndWait(locatorToOpenXpath),
+        ]);
+    }
+
+    async addKeyButtonClick() {
+        await this.waitForXpathAndClickAndWait(this.addKey);
+    }
+
+    async fillInKeyPopup(){
+
     }
 }
 

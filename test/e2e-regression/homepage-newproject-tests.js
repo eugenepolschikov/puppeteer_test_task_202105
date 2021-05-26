@@ -21,7 +21,7 @@ const HomepageNewprojectTests = () => {
         await reportUtils.addScreenshot(reporter, 'HomepageNewprojectTests');
     });
 
-    it('can create a new project with all mandatory fields', async () => {
+/*    it('can create a new project with all mandatory fields', async () => {
 
         await homepage.reloadThePage();
         await homepage.addNewProject();
@@ -30,9 +30,9 @@ const HomepageNewprojectTests = () => {
         //checking that a single project appeared on the page
         const expectedProjectsNumber = 1;
         await homepage.checkForTotalNumberOfProjectsOnThePage(expectedProjectsNumber);
-    });
+    });*/
 
-    it('can create another project and test that total number of projects equals 2', async () =>{
+/*    it('can create another project and test that total number of projects equals 2', async () =>{
         await homepage.reloadThePage();
         await homepage.addNewProject();
         await homepage.fillInProjectDataAndSubmit(projectTwo);
@@ -40,6 +40,14 @@ const HomepageNewprojectTests = () => {
 
         const expectedProjectsNumber = 2;
         await homepage.checkForTotalNumberOfProjectsOnThePage(expectedProjectsNumber);
+    })*/
+
+    it('can create a key for the first newly added project', async () =>{
+        await homepage.reloadThePage();
+        // await homepage.openProjectByName(projectData.projectName);
+        await homepage.openProjectByName("eugene-project-p9lqv-2021-05-27");
+        await homepage.addKeyButtonClick();
+
     })
 
 };
