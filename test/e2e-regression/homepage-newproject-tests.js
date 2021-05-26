@@ -26,6 +26,8 @@ const HomepageNewprojectTests = () => {
         await homepage.addNewProject();
         await homepage.fillInProjectDataAndSubmit(projectData);
         await homepage.navigateToProjectList();
+        //checking that a single project appeared on the page
+        await homepage.checkForTotalNumberOfProjectsOnThePage(1);
     });
 
 };

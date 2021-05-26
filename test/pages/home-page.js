@@ -1,6 +1,9 @@
 'use strict';
 
+const chai = require('chai');
+const expect = chai.expect;
 const BasePage = require('./base-page.js');
+
 
 class HomePage extends BasePage {
     constructor() {
@@ -16,6 +19,9 @@ class HomePage extends BasePage {
 
         // home subpage
         this.homeToProjectsButton = "a[href='/']";
+
+        //actual project list
+        this.projectList = "//div[@data-rbd-draggable-context-id='0']//div[@data-name='project-sidebar']/a";
 
     }
 
@@ -60,6 +66,11 @@ class HomePage extends BasePage {
             this.page.click(this.homeToProjectsButton),
         ]);
 
+    }
+
+    async checkForTotalNumberOfProjectsOnThePage(totalProjNumber){
+        let arrayOfProjects = await page.$x(this.projectList);
+        expect(arrayOfProjects.length).to.eql(totalProjNumber);
     }
 }
 
