@@ -1,0 +1,35 @@
+{
+    "url": {
+        "dev": "http://localhost:9001",
+        "latestCommit": "https://app.lokalise.com/"
+    },
+
+    "settings": {
+        "allureReports": true,
+        "cleanReports": true
+    },
+
+    "test-enabled": {
+        "login-logout": true,
+        "workpackage-test": true
+    },
+
+    "testdata": {
+        "wait-times": {
+            "jestTimeOut": 70000,
+            "jestExtendedTimeOut": 120000,
+            "loadTime": 5000,
+            "timeoutTwoSec": 2000
+        },
+        "home-page-values": {
+            "topNavPlanning": "Planning",
+            "alertsHeader": "Alerts"
+        }
+    },
+    "latestCommit": {
+        "someValue": "Test"
+    },
+    "testing": {
+        "someValue": "Test"
+    }
+}
