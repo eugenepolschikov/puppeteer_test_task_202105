@@ -8,7 +8,7 @@ class HomePage extends BasePage {
         this.page = global.page;
 
         // top navigation bar
-        this.topNavPlanning = "div.v-toolbar__items a[href='/planning'] span";
+        this.newProjectBtn = "button[data-action=add-project]";
 
         // planning tab
         this.planningTab = "[href='/planning']";
@@ -53,7 +53,7 @@ class HomePage extends BasePage {
         ]);
     }
 
-    async openPlanningTab() {
+    async addNewProject() {
         await Promise.all([
             this.page.waitForNavigation({
                 waitUntil: ['load', 'domcontentloaded', 'networkidle0'],

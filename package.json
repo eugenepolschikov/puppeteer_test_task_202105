@@ -6,6 +6,7 @@
             "./test/jest.overrides.js"
         ],
         "setupFilesAfterEnv": [
+            "jest-allure/dist/setup",
             "./e2e-jest-additional"
         ],
         "roots": [

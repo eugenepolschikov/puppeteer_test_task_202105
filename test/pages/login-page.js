@@ -7,10 +7,10 @@ class LoginPage extends BasePage {
     constructor() {
         super();
         this.page = global.page;
-        this.formSignin = '.form-signin';
-        this.fldUsername = 'input[type=username]';
-        this.fldPassword = 'input[type=password]';
-        this.btnSubmit = 'button[id=submit]';
+
+        this.fldUsername = '#signin-email';
+        this.fldPassword = '#signinPassword';
+        this.btnSubmit = '#go-login';
 
         this.username = process.env.APP_USERNAME;
         this.password = process.env.APP_PASSWORD;
@@ -22,7 +22,7 @@ class LoginPage extends BasePage {
         await this.page.goto(url, {
             waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
         });
-        await this.page.waitForSelector(this.formSignin);
+        await this.page.waitForSelector(this.fldPassword);
 
         // Enter username and password
         await this.page.type(this.fldUsername, this.username);

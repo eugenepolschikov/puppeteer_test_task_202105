@@ -2,7 +2,6 @@
 
 /**
  * Add a screenshot to reporting
- * @param page - Puppeteer page object
  * @param reporter - Reporting object
  * @param description - Description for screenshot
  */
