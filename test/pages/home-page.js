@@ -12,6 +12,10 @@ class HomePage extends BasePage {
 
         // project popup webelements
         this.projectName = "#addproject  #project-name";
+        this.addNewProjectButton = "#project-add";
+
+        // home subpage
+        this.homeToProjectsButton = "a[href='/']";
 
     }
 
@@ -39,6 +43,22 @@ class HomePage extends BasePage {
             this.projectName,
             projectData.projectName
         );
+
+        await Promise.all([
+            this.page.waitForNavigation({
+                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
+            }),
+            this.page.click(this.addNewProjectButton),
+        ]);
+    }
+
+    async navigateToProjectList(){
+        await Promise.all([
+            this.page.waitForNavigation({
+                waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
+            }),
+            this.page.click(this.homeToProjectsButton),
+        ]);
 
     }
 }

@@ -25,6 +25,7 @@ const HomepageNewprojectTests = () => {
         await homepage.reloadThePage();
         await homepage.addNewProject();
         await homepage.fillInProjectDataAndSubmit(projectData);
+        await homepage.navigateToProjectList();
     });
 
 };
