@@ -46,8 +46,7 @@ const HomepageNewprojectTests = () => {
 
     it('can create a key for the first newly added project', async () =>{
         await homepage.reloadThePage();
-        // await homepage.openProjectByName(projectData.projectName);
-        await homepage.openProjectByName("eugene-project-p9lqv-2021-05-27");
+        await homepage.openProjectByName(projectData.projectName);
         await homepage.addKeyButtonClick();
         await homepage.fillInKeyPopupAndSaveIt(keyVal.keyName);
 
