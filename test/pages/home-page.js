@@ -112,8 +112,19 @@ class HomePage extends BasePage {
 
         await this.clickByCssAndWait(this.platformInput);
         // await this.waitForXpathAndClickAndWait(this.androidOptionXpath);
-        await this.waitForXpathAndClickAndWait("//div[@role='option'][text()='Android']");
-        this.page.click(this.saveKey);
+        // await this.waitForXpathAndClickAndWait("//div[@role='option'][text()='Android']");
+        await this.enterInField(
+            this.platformInput,
+            "Android"
+        );
+        // await this.platformInput.press("Tab");
+
+        const example = await page.$(this.platformInput);
+        await example.click({
+            button: 'right',
+        });
+
+        await this.page.click(this.saveKey);
         // await Promise.all([
         //     this.page.waitForNavigation({
         //         waitUntil: ['load', 'domcontentloaded', 'networkidle0'],
